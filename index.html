@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Celebration</title>
+  <style>
+    /* General Reset */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #f5e1f5, #ffbbcc); /* Soft pink gradient */
+    }
+
+    /* Full-page grid layout */
+    .grid {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+    }
+
+    /* Header with animated text */
+    .top-text h2 {
+      font-size: 3.5rem;
+      color: #fff;
+      background: linear-gradient(45deg, #ff7cc7, #ff95a3);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 0 10px rgba(255, 99, 71, 0.8), 0 0 25px rgba(255, 99, 71, 0.6);
+      margin-bottom: 20px;
+      animation: glowText 2s infinite alternate;
+      z-index: 2;
+    }
+
+    /* Animation for glowing text */
+    @keyframes glowText {
+      0% {
+        text-shadow: 0 0 20px rgba(255, 99, 71, 0.8), 0 0 40px rgba(255, 99, 71, 0.6);
+      }
+      50% {
+        text-shadow: 0 0 30px rgba(255, 99, 71, 1), 0 0 60px rgba(255, 99, 71, 0.9);
+      }
+      100% {
+        text-shadow: 0 0 20px rgba(255, 99, 71, 0.8), 0 0 40px rgba(255, 99, 71, 0.6);
+      }
+    }
+
+    /* Photo frame with birthday girl's image */
+    .mid-image {
+      display: inline-block;
+      padding: 10px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 3;
+      width: 180px;
+      height: 180px;
+      margin-bottom: 20px;
+    }
+
+    /* Image styling inside the frame */
+    .mid-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    /* Bengali text for "Shubho Jonmodin" (Happy Birthday in Bengali) */
+    .bengali-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      color: #ff6347;
+      background: linear-gradient(to right, #ff6347, #ff9f45);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 0 10px rgba(255, 99, 71, 0.6), 0 0 20px rgba(255, 99, 71, 0.6);
+      margin-top: 10px;
+      animation: glowText 2s infinite alternate;
+      z-index: 2;
+    }
+
+    /* Bottom text (Birthday wishes) */
+    .bottom-text {
+      font-size: 1.2rem;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      max-width: 650px;
+      margin-top: 20px;
+      line-height: 1.8;
+      animation: fadeInUp 1s ease-out;
+      z-index: 2;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Styling for small quote */
+    .quote {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.4rem;
+      color: #ff6347;
+      margin-top: 15px;
+      text-align: center;
+      font-style: italic;
+      opacity: 0.8;
+      z-index: 2;
+      margin-top: 20px;
+    }
+
+    /* Firework animation styles */
+    @keyframes fireworkLaunch {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-300px);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fireworkBurst {
+      0% {
+        transform: scale(0);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(2);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
+
+    /* Firework styles */
+    .firework {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      animation: fireworkLaunch 1s forwards, fireworkBurst 1s 1s forwards;
+      opacity: 0;
+    }
+
+    .firework1 {
+      background: radial-gradient(circle, #ff6347, #ff4500);
+    }
+
+    .firework2 {
+      background: radial-gradient(circle, #1e90ff, #4682b4);
+    }
+
+    .firework3 {
+      background: radial-gradient(circle, #32cd32, #228b22);
+    }
+
+    .firework4 {
+      background: radial-gradient(circle, #ff8c00, #f4a261);
+    }
+
+    /* Balloon floating animation */
+    .balloon {
+      position: absolute;
+      width: 50px;
+      height: 70px;
+      border-radius: 50%;
+      animation: floatBalloon 12s infinite ease-in-out;
+      opacity: 0.8;
+    }
+
+    @keyframes floatBalloon {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(-300px) rotate(360deg);
+      }
+    }
+
+    /* Snowflake styles */
+    .snowflake {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      border-radius: 50%;
+      animation: snowAnimation 10s linear infinite;
+    }
+
+    @keyframes snowAnimation {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Dancing+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Grid layout -->
+  <div class="grid">
+    <!-- Top Text (Happy Birthday) -->
+    <div class="top-text">
+      <h2>Happy Birthday 🎂</h2>
+    </div>
+
+    <!-- Birthday Girl Image -->
+    <div class="mid-image">
+      <img src="assets/nai.jpg" alt="Birthday Girl">
+    </div>
+
+    <!-- Bengali Text (Happy Birthday in Bengali) -->
+    <div class="bengali-text">
+      শুভ জন্মদিন 🎉
+    </div>
+
+    <!-- Bottom Text (Birthday wishes) -->
+    <div class="bottom-text">
+      <p>Wishing you a day full of joy, love, and beautiful moments. Keep shining, always! ✨💖 <br>
+        Smile always, stay healthy, and let happiness be your guide 🌟😊</p>
+    </div>
+
+    <!-- Special Quote -->
+    <div class="quote">
+      "You are that cloud, and I’m that sun, I can't hold you, but I’ll adore you from a distance."
+    </div>
+  </div>
+
+  <!-- Fireworks container -->
+  <div class="fireworks">
+    <div class="firework firework1" style="top: 80%; left: 10%;"></div>
+    <div class="firework firework2" style="top: 80%; left: 50%;"></div>
+    <div class="firework firework3" style="top: 80%; left: 80%;"></div>
+    <div class="firework firework4" style="top: 80%; left: 30%;"></div>
+  </div>
+
+  <!-- Balloons container -->
+  <div class="balloons">
+    <div class="balloon" style="left: 10%; background-color: #ff77ff;"></div>
+    <div class="balloon" style="left: 50%; background-color: #ffa500;"></div>
+    <div class="balloon" style="left: 80%; background-color: #32cd32;"></div>
+  </div>
+
+  <!-- Snowflakes container -->
+  <div class="snowflakes">
+    <div class="snowflake" style="left: 15%; animation-delay: 0s;"></div>
+    <div class="snowflake" style="left: 30%; animation-delay: 1s;"></div>
+    <div class="snowflake" style="left: 60%; animation-delay: 3s;"></div>
+    <div class="snowflake" style="left: 85%; animation-delay: 5s;"></div>
+  </div>
+
+</body>
+</html>
